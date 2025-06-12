@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Project List <span class="alpha-badge">Alpha Version</span></title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #e0e0e0;
+            --bg-dark: #0a0a1a;
+            --card-bg: #1e1e2a;
+            --text-light: #ffffff;
+            --text-muted: #b0b0b0;
+            --shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            --border: 1px solid rgba(255, 255, 255, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+            font-size: clamp(14px, 1.8vw, 16px);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(20, 20, 30, 0.95);
+            backdrop-filter: blur(10px);
+            padding: clamp(10px, 1.5vw, 12px) clamp(16px, 2.5vw, 20px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: var(--border);
+        }
+
+        .navbar h2 {
+            font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .alpha-badge {
+            border: 1px solid var(--primary-color);
+            padding: 3px 8px;
+            border-radius: 4px;
+            color: var(--primary-color);
+            font-size: clamp(0.7rem, 1.2vw, 0.8rem);
+            font-weight: 400;
+        }
+
+        .menu-toggle {
+            font-size: clamp(1.4rem, 2vw, 1.6rem);
+            cursor: pointer;
+            color: var(--text-light);
+            transition: color 0.2s ease;
+            display: none;
+        }
+
+        .menu-toggle:hover {
+            color: var(--primary-color);
+        }
+
+        .background-canvas {
+            position: fixed;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .container {
+            display: flex;
+            margin-top: clamp(50px, 6vh, 60px);
+        }
+
+        aside {
+            margin-top: 40px;
+            width: clamp(220px, 18vw, 280px);
+            background: rgba(20, 20, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border-right: var(--border);
+            padding: clamp(20px, 2.5vw, 24px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: calc(100vh - clamp(50px, 6vh, 60px));
+            position: fixed;
+            z-index: 999;
+            transition: transform 0.3s ease;
+        }
+
+        aside.hidden {
+            transform: translateX(-100%);
+        }
+
+        aside.visible {
+            transform: translateX(0);
+        }
+
+        .avatar {
+            width: clamp(100px, 12vw, 140px);
+            height: clamp(100px, 12vw, 140px);
+            border-radius: 50%;
+            border: 3px solid var(--primary-color);
+            background-image: url('https://i.pinimg.com/1200x/0d/b6/21/0db621d65f426f89f78908e37e86f75c.jpg');
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.2s ease;
+            position: relative;
+        }
+
+        .avatar:hover {
+            transform: scale(1.04);
+        }
+
+        .avatar::after {
+            content: '✔';
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: var(--primary-color);
+            color: var(--bg-dark);
+            border-radius: 50%;
+            padding: 6px;
+            font-size: clamp(12px, 1.2vw, 14px);
+            line-height: 1;
+        }
+
+        .info {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .info h3 {
+            font-size: clamp(1.2rem, 2vw, 1.4rem);
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .info p {
+            font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin: 16px 0;
+        }
+
+        .badge {
+            background: rgba(80, 80, 80, 0.6);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: clamp(0.7rem, 1.4vw, 0.8rem);
+            color: var(--text-light);
+            transition: background 0.2s ease;
+        }
+
+        .badge:hover {
+            background: rgba(80, 80, 80, 0.8);
+        }
+
+        .social {
+            margin-top: 16px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .social a {
+            color: var(--text-muted);
+            font-size: clamp(1.2rem, 2vw, 1.4rem);
+            transition: color 0.2s ease;
+        }
+
+        .social a:hover {
+            color: var(--primary-color);
+        }
+
+        main {
+            padding: clamp(24px, 3vw, 32px);
+            display: grid;
+            grid-template-columns: 1fr; /* One card per row on desktop */
+            gap: clamp(24px, 3vw, 32px);
+            margin-left: clamp(220px, 18vw, 280px);
+            transition: margin-left 0.3s ease;
+            justify-content: center;
+            width: calc(100% - clamp(220px, 18vw, 280px));
+            max-width: 800px; /* Optional: Limit card width for better aesthetics */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        main.shifted {
+            margin-left: 0;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            width: 100%;
+            overflow: hidden;
+            border: var(--border);
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: row;
+            height: clamp(280px, 30vw, 320px);
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-image-wrapper {
+            flex: 0 0 50%;
+            position: relative;
+            overflow: hidden;
+            background: #1a1a25;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .hover-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.7), rgba(74, 144, 226, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .project-image:hover .hover-icon {
+            opacity: 1;
+        }
+        
+
+        .hover-icon {
+            color: var(--text-light);
+            font-size: clamp(1.6rem, 2.2vw, 1.8rem);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 12px;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .hover-icon:hover {
+            transform: scale(1.1);
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .project-content {
+            flex: 0 0 50%;
+            padding: clamp(16px, 2vw, 20px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 12px;
+            background: linear-gradient(180deg, rgba(30, 30, 42, 0.95), rgba(20, 20, 30, 0.95));
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-title {
+            font-size: clamp(1.2rem, 1.8vw, 1.3rem);
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .live-indicator {
+            background: var(--primary-color);
+            color: var(--text-light);
+            font-size: clamp(0.7rem, 1.1vw, 0.75rem);
+            padding: 4px 10px;
+            border-radius: 12px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .project-desc {
+            font-size: clamp(0.8rem, 1.4vw, 0.9rem);
+            color: var(--text-muted);
+            line-height: 1.5;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+        }
+
+        .tech-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 8px 0;
+        }
+
+        .tech-icons img {
+            width: clamp(20px, 2vw, 30px);
+            height: clamp(20px, 2vw, 30px);
+            border-radius: 4px;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tech-icons img:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary-color);
+        }
+
+        .action-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding-top: 8px;
+            border-top: var(--border);
+        }
+
+        .live-site-btn {
+            background: var(--primary-color);
+            color: var(--text-light);
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: clamp(0.75rem, 1.3vw, 0.85rem);
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .live-site-btn:hover {
+            background: #3a80d2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+        }
+
+        .project-idea {
+            font-size: clamp(0.75rem, 1.3vw, 0.85rem);
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .project-idea:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .social-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon-link {
+            color: var(--text-muted);
+            font-size: clamp(1rem, 1.6vw, 1.1rem);
+            transition: var(--transition);
+        }
+
+        .icon-link:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .date {
+            font-size: clamp(0.7rem, 1.2vw, 0.8rem);
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a80d2;
+        }
+
+        @media (max-width: 1024px) {
+            aside {
+                width: 220px;
+            }
+            main {
+                margin-left: 220px;
+                width: calc(100% - 220px);
+            }
+            .project-card {
+                height: clamp(260px, 28vw, 300px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            aside {
+                transform: translateX(-100%);
+                width: 260px;
+            }
+            aside.visible {
+                transform: translateX(0);
+            }
+            main {
+                margin-left: 0;
+                padding: clamp(16px, 2vw, 20px);
+                width: 100%;
+                grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 45vw, 300px), 1fr));
+                max-width: 100%;
+            }
+            .project-card {
+                flex-direction: column;
+                height: auto;
+                min-height: clamp(380px, 50vw, 420px);
+            }
+            .project-image-wrapper {
+                flex: none;
+                height: 200px;
+            }
+            .project-content {
+                flex: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar h2 {
+                font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+            }
+            main {
+                grid-template-columns: repeat(auto-fit, minmax(clamp(220px, 90vw, 280px), 1fr));
+            }
+            .project-image-wrapper {
+                height: 160px;
+            }
+            .project-title {
+                font-size: clamp(1rem, 1.8vw, 1.2rem);
+            }
+            .project-desc {
+                font-size: clamp(0.75rem, 1.3vw, 0.85rem);
+                -webkit-line-clamp: 3;
+            }
+            .live-site-btn,
+            .project-idea {
+                font-size: clamp(0.7rem, 1.2vw, 0.8rem);
+            }
+            .tech-icons img {
+                width: clamp(16px, 1.8vw, 18px);
+                height: clamp(16px, 1.8vw, 18px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="stars" class="background-canvas"></canvas>
+
+    <div class="navbar">
+        <h2>All Project List <span class="alpha-badge">Alpha Version</span></h2>
+        <div class="menu-toggle"><i class="bx bx-menu"></i></div>
+    </div>
+
+    <div class="container">
+        <aside>
+            <div class="avatar"></div>
+            <div class="info">
+                <h3>Irshad Hossain</h3>
+                <p>Student, Software Engineering</p>
+                <p>University of Frontier Technology Bangladesh</p>
+            </div>
+            <div class="badges">
+                <div class="badge">HTML</div>
+                <div class="badge">CSS</div>
+                <div class="badge">JS</div>
+                <div class="badge">React</div>
+            </div>
+            <div class="social">
+                <a href="https://github.com/Irshad-11" aria-label="GitHub"><i class="bx bxl-github"></i></a>
+                <a href="https://www.linkedin.com/in/irshad-hossain-785548323/" aria-label="LinkedIn"><i class="bx bxl-linkedin"></i></a>
+                <a href="https://www.facebook.com/irshad.risad" aria-label="Facebook"><i class="bx bxl-facebook"></i></a>
+            </div>
+        </aside>
+
+        <main id="projects-container"></main>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('stars');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const stars = [];
+        const comets = [];
+        const fallingStars = [];
+
+        class Star {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1 + 0.6;
+                this.baseOpacity = Math.random() * 0.4 + 0.3;
+                this.speedX = (Math.random() - 0.5) * 0.03;
+                this.speedY = (Math.random() - 0.5) * 0.03;
+                this.phase = Math.random() * Math.PI * 2;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+                this.opacity = this.baseOpacity * (0.6 + 0.4 * Math.sin(Date.now() * 0.00015 + this.phase));
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        class Comet {
+            constructor() {
+                this.reset();
+                this.lastSpawn = Date.now();
+            }
+            update() {
+                const now = Date.now();
+                if (now - this.lastSpawn < 15000) return;
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.opacity -= 0.002;
+                if (this.y > canvas.height + 20 || this.opacity <= 0) this.reset();
+            }
+            draw() {
+                if (Date.now() - this.lastSpawn < 15000) return;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(150, 255, 255, ${this.opacity})`;
+                ctx.shadowBlur = 5;
+                ctx.shadowColor = `rgba(150, 255, 255, ${this.opacity * 0.3})`;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = -10;
+                this.size = Math.random() * 0.8 + 0.4;
+                this.speedY = Math.random() * 1.5 + 0.8;
+                this.speedX = (Math.random() - 0.5) * 0.8;
+                this.opacity = 0.9;
+                this.lastSpawn = Date.now();
+            }
+        }
+
+        class FallingStar {
+            constructor() {
+                this.reset();
+                this.lastSpawn = Date.now();
+            }
+            update() {
+                const now = Date.now();
+                if (now - this.lastSpawn < 10000) return;
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.opacity -= 0.005;
+                this.size = Math.max(this.size * 0.95, 0.5);
+                if (this.opacity <= 0 || this.y > canvas.height + 20) this.reset();
+            }
+            draw() {
+                if (Date.now() - this.lastSpawn < 10000) return;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 200, ${this.opacity})`;
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = `rgba(255, 255, 200, ${this.opacity * 0.6})`;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = -10;
+                this.size = Math.random() * 1.5 + 1;
+                this.speedY = Math.random() * 2 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.opacity = 1;
+                this.lastSpawn = Date.now();
+            }
+        }
+
+        for (let i = 0; i < 400; i++) stars.push(new Star());
+        for (let i = 0; i < 2; i++) comets.push(new Comet());
+        for (let i = 0; i < 2; i++) fallingStars.push(new FallingStar());
+
+        function animate() {
+            ctx.fillStyle = 'rgba(10, 10, 30, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(star => {
+                star.update();
+                star.draw();
+            });
+            comets.forEach(comet => {
+                comet.update();
+                comet.draw();
+            });
+            fallingStars.forEach(fallingStar => {
+                fallingStar.update();
+                fallingStar.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        const menuToggle = document.querySelector('.menu-toggle');
+        const aside = document.querySelector('aside');
+        const main = document.querySelector('main');
+
+        menuToggle.addEventListener('click', () => {
+            aside.classList.toggle('hidden');
+            aside.classList.toggle('visible');
+            main.classList.toggle('shifted');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && !aside.contains(e.target) && !menuToggle.contains(e.target) && aside.classList.contains('visible')) {
+                aside.classList.remove('visible');
+                aside.classList.add('hidden');
+                main.classList.remove('shifted');
+            }
+        });
+
+        async function loadProjects() {
+            try {
+                const response = await fetch('projectlist.json');
+                const projects = await response.json();
+                const projectsContainer = document.getElementById('projects-container');
+                projectsContainer.innerHTML = '';
+
+                projects.forEach(project => {
+                    const projectCard = document.createElement('div');
+                    projectCard.className = 'project-card';
+
+                    const techIcons = project.techStack.map(tech => `
+                        <img src="${tech.icon}" alt="${tech.name}" title="${tech.name}" />
+                    `).join('');
+
+                    const socialLinks = project.socialLinks.map(link => `
+                        <a href="${link.url}" target="_blank" class="icon-link" aria-label="${link.platform}">
+                            <i class="bx bxl-${link.platform.toLowerCase()}"></i>
+                        </a>
+                    `).join('');
+
+                    projectCard.innerHTML = `
+                    
+                        <div class="project-image-wrapper">
+                            <img src="${project.image}" class="project-image" alt="${project.title}">
+                            <a href="${project.liveLink}" target="_blank" class="hover-overlay" title="Go to site" aria-label="Visit ${project.title}">
+                                <i class="bx bx-link-external hover-icon"></i>
+                            </a>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h2 class="project-title">${project.title}</h2>
+                                <span class="live-indicator">${project.status}</span>
+                            </div>
+                            <div class="date"><i class="bx bx-time-five"></i> ${project.date}</div>
+                            <p class="project-desc">${project.description}</p>
+                            <div class="tech-row tech-icons">${techIcons}</div>
+                            <div class="action-row">
+                                <a href="${project.liveLink}" class="live-site-btn" target="_blank">Live Site <i class="bx bx-right-arrow-alt"></i></a>
+                                <a href="${project.ideaLink}" class="project-idea" target="_blank">Project Idea</a>
+                                <div class="social-row">${socialLinks}</div>
+                            </div>
+                        </div>
+                    `;
+                    projectsContainer.appendChild(projectCard);
+                });
+            } catch (error) {
+                console.error('Error loading projects:', error);
+            }
+        }
+
+        loadProjects();
+    </script>
+</body>
+</html>

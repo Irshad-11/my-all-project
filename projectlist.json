@@ -1,0 +1,109 @@
+[
+  {
+    "title": "AI Weather App",
+    "description": "A smart weather app using OpenAI + API integration.",
+    "date": "22 June, 2025",
+    "status": "LIVE",
+    "image": "https://i.pinimg.com/1200x/e5/bc/b8/e5bcb852d4ed8fc86ff8070c029b5c1c.jpg",
+    "liveLink": "https://example.com",
+    "ideaLink": "https://project-idea.com",
+    "techStack": [
+      {
+        "name": "Node.js",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+      },
+      {
+        "name": "React",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+      },
+      {
+        "name": "Tailwind CSS",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg"
+      }
+    ],
+    "socialLinks": [
+      {
+        "platform": "GitHub",
+        "url": "https://github.com"
+      },
+      {
+        "platform": "LinkedIn",
+        "url": "https://linkedin.com"
+      },
+      {
+        "platform": "Facebook",
+        "url": "https://facebook.com"
+      }
+    ]
+  },
+  {
+    "title": "Portfolio Site",
+    "description": "My modern and interactive portfolio website.",
+    "date": "15 May, 2025",
+    "status": "LIVE",
+    "image": "https://i.pinimg.com/1200x/5f/74/06/5f74068df06bdf9a7925668196cdab0e.jpg",
+    "liveLink": "https://example.com",
+    "ideaLink": "https://project-idea.com",
+    "techStack": [
+      {
+        "name": "HTML5",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+      },
+      {
+        "name": "CSS3",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+      },
+      {
+        "name": "JavaScript",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+      }
+    ],
+    "socialLinks": [
+      {
+        "platform": "GitHub",
+        "url": "https://github.com"
+      },
+      {
+        "platform": "LinkedIn",
+        "url": "https://linkedin.com"
+      },
+      {
+        "platform": "Facebook",
+        "url": "https://facebook.com"
+      }
+    ]
+  },
+  {
+    "title": "Space Explorer Game",
+    "description": "Canvas-based fun space arcade game.",
+    "date": "01 June, 2025",
+    "status": "LIVE",
+    "image": "https://i.pinimg.com/1200x/ad/20/74/ad2074c73fb749bbdc091d9f530ee640.jpg",
+    "liveLink": "https://example.com",
+    "ideaLink": "https://project-idea.com",
+    "techStack": [
+      {
+        "name": "HTML5",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+      },
+      {
+        "name": "JavaScript",
+        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+      }
+    ],
+    "socialLinks": [
+      {
+        "platform": "GitHub",
+        "url": "https://github.com"
+      },
+      {
+        "platform": "LinkedIn",
+        "url": "https://linkedin.com"
+      },
+      {
+        "platform": "Facebook",
+        "url": "https://facebook.com"
+      }
+    ]
+  }
+]
