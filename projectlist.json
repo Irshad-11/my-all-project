@@ -1,109 +1,150 @@
 [
-  {
-    "title": "AI Weather App",
-    "description": "A smart weather app using OpenAI + API integration.",
-    "date": "22 June, 2025",
-    "status": "LIVE",
-    "image": "https://i.pinimg.com/1200x/e5/bc/b8/e5bcb852d4ed8fc86ff8070c029b5c1c.jpg",
-    "liveLink": "https://example.com",
-    "ideaLink": "https://project-idea.com",
-    "techStack": [
-      {
-        "name": "Node.js",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-      },
-      {
-        "name": "React",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-      },
-      {
-        "name": "Tailwind CSS",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg"
-      }
-    ],
-    "socialLinks": [
-      {
-        "platform": "GitHub",
-        "url": "https://github.com"
-      },
-      {
-        "platform": "LinkedIn",
-        "url": "https://linkedin.com"
-      },
-      {
-        "platform": "Facebook",
-        "url": "https://facebook.com"
-      }
-    ]
-  },
-  {
-    "title": "Portfolio Site",
-    "description": "My modern and interactive portfolio website.",
-    "date": "15 May, 2025",
-    "status": "LIVE",
-    "image": "https://i.pinimg.com/1200x/5f/74/06/5f74068df06bdf9a7925668196cdab0e.jpg",
-    "liveLink": "https://example.com",
-    "ideaLink": "https://project-idea.com",
-    "techStack": [
-      {
-        "name": "HTML5",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-      },
-      {
-        "name": "CSS3",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-      },
-      {
-        "name": "JavaScript",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-      }
-    ],
-    "socialLinks": [
-      {
-        "platform": "GitHub",
-        "url": "https://github.com"
-      },
-      {
-        "platform": "LinkedIn",
-        "url": "https://linkedin.com"
-      },
-      {
-        "platform": "Facebook",
-        "url": "https://facebook.com"
-      }
-    ]
-  },
-  {
-    "title": "Space Explorer Game",
-    "description": "Canvas-based fun space arcade game.",
-    "date": "01 June, 2025",
-    "status": "LIVE",
-    "image": "https://i.pinimg.com/1200x/ad/20/74/ad2074c73fb749bbdc091d9f530ee640.jpg",
-    "liveLink": "https://example.com",
-    "ideaLink": "https://project-idea.com",
-    "techStack": [
-      {
-        "name": "HTML5",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-      },
-      {
-        "name": "JavaScript",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-      }
-    ],
-    "socialLinks": [
-      {
-        "platform": "GitHub",
-        "url": "https://github.com"
-      },
-      {
-        "platform": "LinkedIn",
-        "url": "https://linkedin.com"
-      },
-      {
-        "platform": "Facebook",
-        "url": "https://facebook.com"
-      }
-    ]
-  }
+    {
+        "title": "GradeEasy",
+        "description": "Customizable CGPA Calculator with Tracking System, along with the Software Engineering Department Course Outline for easy access by my classmates.",
+        "date": "27 March, 2025",
+        "status": "LIVE",
+        "image": "https://i.imgur.com/re6uKtb.jpeg",
+        "liveLink": "https://irshad-11.github.io/GradeEasy/",
+        "ideaLink": "https://project-idea.com",
+        "techStack": [
+            {
+                "name": "HTML5",
+                "icon": "https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"
+            },
+            {
+                "name": "CSS",
+                "icon": "https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg"
+            },
+            {
+                "name": "JavaScript",
+                "icon": "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+            }
+        ],
+        "socialLinks": [
+            {
+                "platform": "GitHub",
+                "url": "https://github.com/Irshad-11/GradeEasy"
+            },
+            {
+                "platform": "LinkedIn",
+                "url": "https://linkedin.com"
+            },
+            {
+                "platform": "Facebook",
+                "url": "https://facebook.com"
+            }
+        ]
+    },
+    {
+        "title": "Simple Text Cleaner",
+        "description": "A clean, ad-free tool for advanced find, replace, and text cleaning with regex support and unmatched simplicity.",
+        "date": "09 June, 2025",
+        "status": "LIVE",
+        "image": "https://raw.githubusercontent.com/Irshad-11/Simple-Text-Cleaner/main/mobileScreenshot.png",
+        "liveLink": "https://irshad-11.github.io/Simple-Text-Cleaner/",
+        "ideaLink": "https://www.linkedin.com/pulse/simple-text-cleaner-irshad-hossain-iezpc",
+        "techStack": [
+            {
+                "name": "HTML5",
+                "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+            },
+            {
+                "name": "CSS3",
+                "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+            },
+            {
+                "name": "JavaScript",
+                "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+            }
+        ],
+        "socialLinks": [
+            {
+                "platform": "GitHub",
+                "url": "https://github.com/Irshad-11/Simple-Text-Cleaner?tab=readme-ov-file"
+            },
+            {
+                "platform": "LinkedIn",
+                "url": "https://www.linkedin.com/pulse/simple-text-cleaner-irshad-hossain-iezpc/"
+            },
+            {
+                "platform": "Facebook",
+                "url": "https://web.facebook.com/share/p/1Z75uoajW2/"
+            }
+        ]
+    },
+    {
+        "title": "QuickTools",
+        "description": "Simple folder based SPA with Notes Checklist and Links also infinity List maker with Export Option.",
+        "date": "22 May, 2025",
+        "status": "LIVE",
+        "image": "https://i.imgur.com/YkKA1y7.jpeg",
+        "liveLink": "https://irshad-11.github.io/QuickTools/",
+        "ideaLink": "https://www.linkedin.com/pulse/introducing-quicktools-my-new-spa-project-irshad-hossain-dql8c",
+        "techStack": [
+            {
+                "name": "HTML5",
+                "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+            },
+            {
+                "name": "Tailwind CSS",
+                "icon": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
+            },
+            {
+                "name": "JavaScript",
+                "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+            }
+        ],
+        "socialLinks": [
+            {
+                "platform": "GitHub",
+                "url": "https://github.com/Irshad-11/QuickTools"
+            },
+            {
+                "platform": "LinkedIn",
+                "url": "https://www.linkedin.com/pulse/introducing-quicktools-my-new-spa-project-irshad-hossain-dql8c"
+            },
+            {
+                "platform": "Facebook",
+                "url": "https://web.facebook.com/share/v/1C5GVg4baz/"
+            }
+        ]
+    },
+    {
+        "title": "ExamGenius",
+        "description": "Smart Exam System",
+        "date": "08 May, 2025",
+        "status": "Under Development",
+        "image": "https://i.imgur.com/G0FnV1U.png",
+        "liveLink": "https://irshad-11.github.io/ExamGenius/",
+        "ideaLink": "https://www.linkedin.com/in/irshad-hossain-785548323/",
+        "techStack": [
+            {
+                "name": "HTML5",
+                "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+            },
+            {
+                "name": "CSS3",
+                "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+            },
+            {
+                "name": "JavaScript",
+                "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+            }
+        ],
+        "socialLinks": [
+            {
+                "platform": "GitHub",
+                "url": "https://github.com/Irshad-11"
+            },
+            {
+                "platform": "LinkedIn",
+                "url": "https://www.linkedin.com/in/irshad-hossain-785548323/"
+            },
+            {
+                "platform": "Facebook",
+                "url": "https://web.facebook.com/profile.php?id=61575792070295"
+            }
+        ]
+    }
 ]
