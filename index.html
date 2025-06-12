@@ -699,7 +699,7 @@
 
         async function loadProjects() {
             try {
-                const response = await fetch('projectlist.json');
+                const response = await fetch('./projectlist.json');
                 const projects = await response.json();
                 const projectsContainer = document.getElementById('projects-container');
                 projectsContainer.innerHTML = '';
